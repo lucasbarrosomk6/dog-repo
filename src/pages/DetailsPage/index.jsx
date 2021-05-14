@@ -20,7 +20,10 @@ const DetailsPage = ({ dog, image, setImage }) => {
   useEffect(() => {
     getDogInfo();
   }, []);
-  console.log({ dog });
+  useEffect(() => {
+    getDogInfo();
+  }, []);
+  console.log({ image });
   return (
     <Container>
       {dog}
@@ -30,7 +33,7 @@ const DetailsPage = ({ dog, image, setImage }) => {
   );
 };
 const mapStateToProps = (state) => ({
-  dog: state.dog,
-  image: state.image,
+  dog: state.dog.dog,
+  image: state.dog.image,
 });
 export default connect(mapStateToProps, { setImage })(DetailsPage);
