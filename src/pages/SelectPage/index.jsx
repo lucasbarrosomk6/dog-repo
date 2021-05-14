@@ -15,7 +15,6 @@ const DetailsPage = ({ setDog }) => {
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
   const [breed, setBreed] = useState({});
   const [subBreeds, setSubBreeds] = useState([]);
 
@@ -38,7 +37,6 @@ const DetailsPage = ({ setDog }) => {
     }
   };
   const handleBreedSelect = (selected) => {
-    setSelectedOption(null);
     if (!selected.subBreeds.length) {
       setDog(selected.value);
       history.push(`/details/${selected.value}`);
@@ -48,8 +46,8 @@ const DetailsPage = ({ setDog }) => {
     }
   };
   const handleSubbreedSelect = (selected) => {
-    setDog(`${breed.value} ${selected.value}`);
-    history.push(`/details/${breed.value}`);
+    setDog(`${selected.value} ${breed.value} `);
+    history.push(`/details/${selected.value}-${breed.value}`);
   };
   useEffect(() => {
     loadOptions();
