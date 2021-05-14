@@ -3,27 +3,27 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { DogService } from "services/dog.service";
 import { Container, Image } from "./styles";
-import {
-  dogReducer,
-  DogActionTypes,
-  initialState,
-  setImage,
-} from "redux/dogReducer/dog.reducer";
+import { setDog, setImage } from "redux/dogReducer/dog.reducer";
 import { connect } from "react-redux";
-const DetailsPage = ({ dog, image, setImage }) => {
+const DetailsPage = ({ dog, image, setImage, setDog }) => {
   let { breed } = useParams();
   const history = useHistory();
   const getDogInfo = async () => {
-    const { data } = await DogService.randomImageByBreed(breed);
+    const processedBreed = breed.includes("-") ? breed.split("-")[1] : breed; //api cant handle dogs like "english hound" just "hound", hence the split
+    const { data } = await DogService.randomImageByBreed(processedBreed);
     setImage(data.message);
   };
   useEffect(() => {
+    if (!dog) {
+      //case: details page refresh resulted in no
+      setDog(breed.replace("-", " "));
+    }
     getDogInfo();
   }, []);
   useEffect(() => {
     getDogInfo();
   }, []);
-  console.log({ image });
+
   return (
     <Container>
       {dog}
@@ -33,7 +33,7 @@ const DetailsPage = ({ dog, image, setImage }) => {
   );
 };
 const mapStateToProps = (state) => ({
-  dog: state.dog.dog,
-  image: state.dog.image,
+  dog: state.dogReducer.dog,
+  image: state.dogReducer.image,
 });
-export default connect(mapStateToProps, { setImage })(DetailsPage);
+export default connect(mapStateToProps, { setImage, setDog })(DetailsPage);
