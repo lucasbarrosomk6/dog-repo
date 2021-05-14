@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import { StyledSelect } from "./styles";
 
 const CustomSelect = ({ onChange, options, error, loading }) => {

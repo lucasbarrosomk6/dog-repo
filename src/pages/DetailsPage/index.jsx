@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { DogService } from "services/dog.service";
 import { Container, Image, ConsolationDog } from "./styles";
-import { setDog, setImage } from "redux/dogReducer/dog.reducer";
+import { setDog, setImage } from "redux/dogReducer/dog.actions";
 import { connect } from "react-redux";
 const DetailsPage = ({ dog, image, setImage, setDog }) => {
   const [error, setError] = useState(false);

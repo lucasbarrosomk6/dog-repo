@@ -1,15 +1,12 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "./styles";
-import CustomSelect from "components/CustomSelect";
+
 import { DogService } from "services/dog.service";
 import { useHistory } from "react-router";
-import {
-  dogReducer,
-  DogActionTypes,
-  initialState,
-  setDog,
-} from "redux/dogReducer/dog.reducer";
+import { setDog } from "redux/dogReducer/dog.actions";
 import { connect } from "react-redux";
+
+import CustomSelect from "components/CustomSelect";
 
 const DetailsPage = ({ setDog }) => {
   const [options, setOptions] = useState([]);
