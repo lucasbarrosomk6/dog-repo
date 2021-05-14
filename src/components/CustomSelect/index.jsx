@@ -1,10 +1,9 @@
 import React, { Component, useState } from "react";
-
-import Select from "react-select";
+import { StyledSelect } from "./styles";
 
 const CustomSelect = ({ onChange, options, error, loading }) => {
   return (
-    <Select
+    <StyledSelect
       options={options}
       isLoading={loading && !error}
       isSearchable

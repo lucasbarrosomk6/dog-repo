@@ -6,4 +6,5 @@ export const DogService = {
   listSubBreed: (breed) => axios.get(`${baseUrl}/breed/${breed}/list`),
   randomImageByBreed: (breed) =>
     axios.get(`${baseUrl}/breed/${breed}/images/random`),
+  randomImage: () => axios.get(`${baseUrl}/breeds/image/random`),
 };

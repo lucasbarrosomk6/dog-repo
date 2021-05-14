@@ -10,3 +10,9 @@ export const Image = styled.img`
   margin: 16px 0;
   width: 280px;
 `;
+export const ConsolationDog = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  text-transform: capitalize;
+`;
